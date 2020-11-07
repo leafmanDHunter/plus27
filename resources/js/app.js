@@ -8,11 +8,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import Delete from "./book/pages/Delete.vue"
 
 
 Vue.component('book-index', () => import('./book/pages/Index.vue'));
-Vue.component('delete', Delete);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
