@@ -27,6 +27,13 @@ class BookController extends Controller
     	return response()->json(['book' => $book]);
     }
 
+    public function update(BookRequest $request, Book $book)
+    {
+        $book->fill($request->validated())->save();
+
+        return response()->json(['book' => $book]);
+    }
+
     public function destroy(Book $book) 
     {
     	$book->forceDelete();

@@ -1,7 +1,7 @@
 <template>
 	<div>
 		  <!-- Button trigger modal -->
-        <button type="button" class="btn btn-danger btn-sm" title="DeleteBookModal" data-toggle="modal" @click.prevent="open">
+        <button type="button" class="btn btn-danger btn-sm" title="Delete Book" data-toggle="modal" @click.prevent="open">
             <i class="ni ni-fat-remove"></i>
         </button>
 

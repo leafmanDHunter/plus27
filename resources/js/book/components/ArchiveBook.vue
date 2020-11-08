@@ -1,7 +1,7 @@
 <template>
 	<div>
 		  <!-- Button trigger modal -->
-        <button type="button" title="ArchiveBook" class="btn btn-warning btn-sm" data-toggle="modal" @click.prevent="open">
+        <button type="button" title="Archive Book" class="btn btn-warning btn-sm" data-toggle="modal" @click.prevent="open">
             <i class="ni ni-archive-2"></i>
         </button>
 

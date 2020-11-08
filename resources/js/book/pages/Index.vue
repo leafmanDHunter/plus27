@@ -13,7 +13,11 @@
 						<add-book @successful="updateBookList"/>
 					</div>
 					<div v-if="is_deleted" class="alert alert-danger font-weight-bold text-center" role="alert">Record Deleted!</div>
+
 					<div v-if="is_archive" class="alert alert-success font-weight-bold text-center" role="alert">Record Archive!</div>
+
+					<div v-if="is_updated" class="alert alert-success font-weight-bold text-center" role="alert">Book Updated!</div>
+
 					<div class="table-responsive" v-if="books.length > 0">
 						<table class="table align-items-center table-flush">
 							<thead class="thead-light">
@@ -32,6 +36,9 @@
 	                                <td>{{ book.publisher }}</td>
 	                                <td>{{ book.page_numbers }}</td>
 	                                <td class="d-flex justify-content-around">
+
+	                                	<edit-book :book="book" @editSuccessful="bookUpdated" />
+
 	                                	<archive-book :book="book" @isArchive="bookArchive"/>
 
 	                                	<delete-book :book="book" @isDeleted="bookDeleted" />
@@ -52,16 +59,19 @@
 import AddBook from "./../components/AddBookModal.vue"
 import DeleteBook from "./../components/DeleteBookModal.vue"
 import ArchiveBook from "./../components/ArchiveBook.vue"
+import EditBook from "./../components/EditBookModal.vue"
+
 	export default {
 		name: "BookIndex",
 		components: {
-			AddBook, DeleteBook, ArchiveBook
+			AddBook, DeleteBook, ArchiveBook, EditBook
 		},
 		data(){
 			return {
 				books: [],
 				is_deleted: false,
 				is_archive: false,
+				is_updated: false,
 			}
 		},
 
@@ -103,6 +113,17 @@ import ArchiveBook from "./../components/ArchiveBook.vue"
 
 				window.setTimeout(() => {
 					this.is_archive = !this.is_archive;
+
+				},1500)
+			},
+
+			bookUpdated() {
+				this.getBooks();
+
+				this.is_updated = !this.is_updated;
+
+				window.setTimeout(() => {
+					this.is_updated = !this.is_updated;
 
 				},1500)
 			}
