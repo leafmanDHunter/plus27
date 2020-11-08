@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('book', [App\Http\Controllers\BookController::class, 'index'])->middleware('auth:api');
 Route::post('book', [App\Http\Controllers\BookController::class, 'store'])->middleware('auth:api');
+Route::delete('book/{book}/delete', [App\Http\Controllers\BookController::class, 'destroy'])->middleware('auth:api');
+Route::delete('book/{book}/archive', [App\Http\Controllers\BookArchiveController::class, 'destroy'])->middleware('auth:api');

@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $this->user()->books()->latest()->get()->dd();
+
         return view('home');
     }
 }

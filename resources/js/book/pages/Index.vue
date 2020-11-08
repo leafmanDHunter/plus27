@@ -12,6 +12,8 @@
 						</h3>
 						<add-book @successful="updateBookList"/>
 					</div>
+					<div v-if="is_deleted" class="alert alert-danger font-weight-bold text-center" role="alert">Record Deleted!</div>
+					<div v-if="is_archive" class="alert alert-success font-weight-bold text-center" role="alert">Record Archive!</div>
 					<div class="table-responsive" v-if="books.length > 0">
 						<table class="table align-items-center table-flush">
 							<thead class="thead-light">
@@ -29,7 +31,11 @@
 	                                <td>{{ book.isbn }}</td>
 	                                <td>{{ book.publisher }}</td>
 	                                <td>{{ book.page_numbers }}</td>
-	                                <td></td>
+	                                <td class="d-flex justify-content-around">
+	                                	<archive-book :book="book" @isArchive="bookArchive"/>
+
+	                                	<delete-book :book="book" @isDeleted="bookDeleted" />
+	                                </td>
 	                            </tr>
 	                        </tbody>
 	                    </table>
@@ -44,14 +50,18 @@
 
 <script>
 import AddBook from "./../components/AddBookModal.vue"
+import DeleteBook from "./../components/DeleteBookModal.vue"
+import ArchiveBook from "./../components/ArchiveBook.vue"
 	export default {
 		name: "BookIndex",
 		components: {
-			AddBook,
+			AddBook, DeleteBook, ArchiveBook
 		},
 		data(){
 			return {
 				books: [],
+				is_deleted: false,
+				is_archive: false,
 			}
 		},
 
@@ -73,6 +83,28 @@ import AddBook from "./../components/AddBookModal.vue"
 					console.log(error)
 				}
 
+			},
+
+			bookDeleted() {
+				this.getBooks();
+
+				this.is_deleted = !this.is_deleted;
+
+				window.setTimeout(() => {
+					this.is_deleted = !this.is_deleted;
+
+				},1500)
+			},
+
+			bookArchive() {
+				this.getBooks();
+
+				this.is_archive = !this.is_archive;
+
+				window.setTimeout(() => {
+					this.is_archive = !this.is_archive;
+
+				},1500)
 			}
 		}
 

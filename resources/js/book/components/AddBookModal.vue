@@ -68,6 +68,7 @@
 			async submit() {
 				try {
 					let {data} = await axios.post('/api/book', this.formData())
+					this.form = {};
 					this.$emit('successful', data.book)
 					this.open();
 				}

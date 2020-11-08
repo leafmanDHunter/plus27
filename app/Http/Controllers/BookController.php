@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BookRequest;
+use App\Models\Book;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -22,6 +23,13 @@ class BookController extends Controller
     public function store(BookRequest $request)
     {
     	$book = $this->user()->books()->create($request->validated());
+
+    	return response()->json(['book' => $book]);
+    }
+
+    public function destroy(Book $book) 
+    {
+    	$book->forceDelete();
 
     	return response()->json(['book' => $book]);
     }

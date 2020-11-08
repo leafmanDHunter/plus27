@@ -21,7 +21,7 @@ class CreateBooksTable extends Migration
             $table->string('publisher');
             $table->string('page_numbers');
             $table->timestamps();
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
         });
     }
 
