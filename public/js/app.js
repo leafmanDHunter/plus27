@@ -34345,6 +34345,9 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('book-index', function () {
   return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(0)]).then(__webpack_require__.bind(null, /*! ./book/pages/Index.vue */ "./resources/js/book/pages/Index.vue"));
 });
+Vue.component('books-achives', function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./book/pages/Archive.vue */ "./resources/js/book/pages/Archive.vue"));
+});
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -20,3 +20,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('book/archive', [App\Http\Controllers\BookArchiveController::class, 'index'])->name('book.archive.index');

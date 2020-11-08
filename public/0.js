@@ -294,6 +294,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'DeleteBook',
   props: {
@@ -1117,11 +1118,12 @@ var render = function() {
                 [
                   _c("div", { staticClass: "modal-body" }, [
                     _c("p", [
+                      _vm._v("Are you sure you want to delete this "),
+                      _c("br"),
                       _vm._v(
-                        "Are you sure you want to delete this " +
-                          _vm._s(_vm.book.title) +
-                          " book?"
-                      )
+                        "\n\t\t      \t\t " + _vm._s(_vm.book.title) + " book "
+                      ),
+                      _c("strong", [_vm._v("permanently?")])
                     ])
                   ]),
                   _vm._v(" "),

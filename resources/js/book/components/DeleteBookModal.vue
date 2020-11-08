@@ -15,7 +15,8 @@
 		      </div>
 		      <form @submit.prevent="submit">
 		      	<div class="modal-body">
-		      		<p>Are you sure you want to delete this {{ book.title }} book?</p>
+		      		<p>Are you sure you want to delete this <br>
+		      		 {{ book.title }} book <strong>permanently?</strong></p>
 		        </div>
 		        <div class="modal-footer">
 		        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

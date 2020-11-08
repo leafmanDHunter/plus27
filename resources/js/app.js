@@ -11,6 +11,7 @@ window.Vue = require('vue');
 
 
 Vue.component('book-index', () => import('./book/pages/Index.vue'));
+Vue.component('books-achives', () => import('./book/pages/Archive.vue'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
