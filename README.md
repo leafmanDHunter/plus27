@@ -9,6 +9,8 @@ This is a simple book store project that allows users to add book, edit book, ar
 - php artisan key:generate
 - npm install
 - npm run dev
+- register as new user
+- Add book
 
 
 ## Question #2: Briefly explain the meaning of CORS and how it relates to web development

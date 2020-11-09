@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class BookArchiveController extends Controller
 {
+	public function __construct()
+	{
+		$this->middleware('auth');
+        $this->middleware('can:view,book')->only(['destroy']);
+
+	}
 
 	public function all()
 	{
@@ -17,7 +23,6 @@ class BookArchiveController extends Controller
 
 	public function index()
 	{
-		// $this->user()->books()->withTrashed()->get()->dd();
 		
 		return view('book.archive.index');
 	}
@@ -26,6 +31,9 @@ class BookArchiveController extends Controller
 	public function update($book) 
 	{
 		$book = Book::withTrashed()->find($book);
+        
+        $this->authorize('view', $book);
+
 		$book->restore();
 
 

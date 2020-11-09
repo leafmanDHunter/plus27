@@ -11,6 +11,8 @@ class BookController extends Controller
     public function __construct()
     {
     	$this->middleware('auth');
+
+        $this->middleware('can:view,book')->only('update');
     }
 
     public function index()
@@ -36,8 +38,8 @@ class BookController extends Controller
 
     public function destroy($book) 
     {
-
         $book = Book::where('id', $book)->withTrashed()->first();
+        $this->authorize('view', $book);
     	$book->forceDelete();
 
 
