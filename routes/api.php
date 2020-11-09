@@ -25,3 +25,5 @@ Route::delete('book/{book}/delete', [App\Http\Controllers\BookController::class,
 Route::delete('book/{book}/archive', [App\Http\Controllers\BookArchiveController::class, 'destroy'])->middleware('auth:api');
 
 Route::get('book/archive', [App\Http\Controllers\BookArchiveController::class, 'all'])->middleware('auth:api');
+
+Route::patch('book/{book}/restore', [App\Http\Controllers\BookArchiveController::class, 'update'])->middleware('auth:api');

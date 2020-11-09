@@ -6,15 +6,17 @@
 					<div class="card-header border-0 d-flex justify-content-between">
 						<h3 class="mb-0">
 							<span v-if="books.length > 0">
-								List of Tables
+								List of Books
 							</span>
 							<span class="text-danger" v-else>No Record Found!</span>
 						</h3>
 						<add-book @successful="updateBookList"/>
 					</div>
+					<div v-if="is_added" class="alert alert-success font-weight-bold text-center" role="alert">Record Added!</div>
+
 					<div v-if="is_deleted" class="alert alert-danger font-weight-bold text-center" role="alert">Record Deleted!</div>
 
-					<div v-if="is_archive" class="alert alert-success font-weight-bold text-center" role="alert">Record Archive!</div>
+					<div v-if="is_archive" class="alert alert-warning font-weight-bold text-center" role="alert">Record Archive!</div>
 
 					<div v-if="is_updated" class="alert alert-success font-weight-bold text-center" role="alert">Book Updated!</div>
 
@@ -72,6 +74,7 @@ import EditBook from "./../components/EditBookModal.vue"
 				is_deleted: false,
 				is_archive: false,
 				is_updated: false,
+				is_added: false,
 			}
 		},
 
@@ -82,6 +85,12 @@ import EditBook from "./../components/EditBookModal.vue"
 		methods: {
 			updateBookList(book) {
 				this.getBooks();
+				this.is_added = !this.is_added
+
+				window.setTimeout(() => {
+					this.is_added = !this.is_added;
+
+				},1500)
 			},
 
 			async getBooks() {

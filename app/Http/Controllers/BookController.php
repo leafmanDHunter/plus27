@@ -34,9 +34,12 @@ class BookController extends Controller
         return response()->json(['book' => $book]);
     }
 
-    public function destroy(Book $book) 
+    public function destroy($book) 
     {
+
+        $book = Book::where('id', $book)->withTrashed()->first();
     	$book->forceDelete();
+
 
     	return response()->json(['book' => $book]);
     }

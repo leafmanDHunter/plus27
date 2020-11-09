@@ -13,6 +13,8 @@
 					</div>
 					<div v-if="is_deleted" class="alert alert-danger font-weight-bold text-center" role="alert">Record Deleted!</div>
 
+					<div v-if="is_restored" class="alert alert-success font-weight-bold text-center" role="alert">Record Restored!</div>
+
 
 					<div class="table-responsive" v-if="books.length > 0">
 						<table class="table align-items-center table-flush">
@@ -31,9 +33,10 @@
 	                                <td>{{ book.isbn }}</td>
 	                                <td>{{ book.publisher }}</td>
 	                                <td>{{ book.page_numbers }}</td>
-	                                <td >
-
+	                                <td class="d-flex justify-content-around">
 	                                	<delete-book :book="book" @isDeleted="bookDeleted" />
+
+	                                	<restore-book :book="book" @isRestore="bookRestored" />
 	                                </td>
 	                            </tr>
 	                        </tbody>
@@ -49,16 +52,18 @@
 
 <script>
 import DeleteBook from "./../components/DeleteBookModal.vue"
+import RestoreBook from "./../components/RestoreBookModal.vue"
 
 	export default {
 		name: "BookArchive",
 		components: {
-			 DeleteBook
+			 DeleteBook, RestoreBook
 		},
 		data(){
 			return {
 				books: [],
 				is_deleted: false,
+				is_restored: false,
 			}
 			
 		},
@@ -91,6 +96,18 @@ import DeleteBook from "./../components/DeleteBookModal.vue"
 
 				},1500)
 			},
+
+			bookRestored() {
+				
+				this.getBookArchives();
+
+				this.is_restored = !this.is_restored;
+
+				window.setTimeout(() => {
+					this.is_restored = !this.is_restored;
+
+				},1500)
+			}
 		}
 
 	};
